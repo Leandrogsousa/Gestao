@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppPrincipal", "Cons
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{B67E45CC-8B17-4670-8F54-B9EA23595C60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{6F3ADD0B-DF61-4B19-8DD8-4196ED98BEA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{6F3ADD0B-DF61-4B19-8DD8-4196ED98BEA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{D6E97789-E7CD-4AEE-8F32-6693574446B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6F3ADD0B-DF61-4B19-8DD8-4196ED98BEA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F3ADD0B-DF61-4B19-8DD8-4196ED98BEA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F3ADD0B-DF61-4B19-8DD8-4196ED98BEA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E97789-E7CD-4AEE-8F32-6693574446B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E97789-E7CD-4AEE-8F32-6693574446B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E97789-E7CD-4AEE-8F32-6693574446B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E97789-E7CD-4AEE-8F32-6693574446B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
