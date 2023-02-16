@@ -1,29 +1,30 @@
-﻿using Models;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Models;
+
 
 namespace DAL
 {
-    public class UsuarioDAL
+    public class PermissaoDAL
     {
-        public void Inserir(Usuario _usuario) 
+        public void Inserir(Usuario _usuario)
         {
             SqlConnection cn = new SqlConnection();
 
             try
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
-                SqlCommand cmd = new SqlCommand();    
+                SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"Insert Into Usuario(Nome,Username,CPF,Email,Passoword,Ativo)
-                                  Values (@Nome,@Username,@CPF,@Email,@Passoword,@Ativo)";
+                cmd.CommandText = @"Insert Into Permissao(Descricao)
+                                   Values(@Descricao)";
 
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
-                cmd.Parameters.AddWithValue("@Username", _usuario.Username);
-                cmd.Parameters.AddWithValue("@CPF", _usuario.Cpf);
-                cmd.Parameters.AddWithValue("@Email", _usuario.Email);
-                cmd.Parameters.AddWithValue("@Passoword", _usuario.Passoword);
-                cmd.Parameters.AddWithValue("@Ativo", _usuario.Ativo);
+                cmd.Parameters.AddWithValue("@Descricao", _usuario.Descricao);
 
                 cn.Open();
                 cmd.ExecuteScalar();
@@ -46,11 +47,10 @@ namespace DAL
         {
 
         }
-        
+
         public void Excluir(int _id)
         {
 
         }
-
     }
 }
