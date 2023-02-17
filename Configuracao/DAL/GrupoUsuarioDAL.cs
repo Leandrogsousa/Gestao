@@ -6,11 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 
-
-
 namespace DAL
 {
-    public class PermissaoDAL
+    internal class GrupoUsuarioDAL
     {
         public void Inserir(Usuario _usuario)
         {
@@ -21,11 +19,11 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"Insert Into Permissao(Descricao)
-                                   Values(@Descricao)";
+                cmd.CommandText = @"Insert Into GrupoUsario(NomeGrupo)
+                                  Values (@NomeGrupo)";
 
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@Descricao", _usuario.Descricao);
+                cmd.Parameters.AddWithValue("NomeGrupo", _usuario.NomeGrupo);
 
                 cn.Open();
                 cmd.ExecuteScalar();
@@ -35,8 +33,8 @@ namespace DAL
             {
                 throw new Exception("Ocorreu um erro ao tentar inserir no banco: " + ex.Message);
             }
-            finally
-            {
+            finally 
+            { 
                 cn.Close();
             }
         }

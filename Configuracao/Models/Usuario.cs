@@ -10,8 +10,7 @@
         public bool Ativo { get; set; }
 
         public List <GrupoUsuario> GrupoUsuarios { get; set; }
-
-
-
+        public object NomeGrupo { get; set; }
+        public object Descricao { get; set; }
     }
 }
