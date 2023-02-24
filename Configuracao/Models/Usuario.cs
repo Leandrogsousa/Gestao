@@ -2,6 +2,7 @@
 {
     public class Usuario
     {
+        public int id_usuario { get; set; }
         public string? Nome { get; set; }
         public string? Username { get; set; }
         public string? Passoword { get; set; }

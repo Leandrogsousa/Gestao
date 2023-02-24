@@ -44,7 +44,6 @@ namespace ConsoleAppPrincipal
             {
                 Console.WriteLine(ex.Message);
             }
-
             
         }
     }

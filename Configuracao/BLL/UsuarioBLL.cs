@@ -1,5 +1,6 @@
 ﻿using DAL;
 using Models;
+using System.Data.SqlClient;
 
 namespace BLL
 {
@@ -34,9 +35,56 @@ namespace BLL
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Inserir(_usuario);
         }
-        public  Usuario Buscar(string _nomeUsuario)
+        public  Usuario BuscarPorNomeUsuario(string _nomeUsuario)
         {
-            throw new NotImplementedException();
+            if (String.IsNullOrEmpty(_nomeUsuario))
+            {
+                throw new Exception("Informe o nome de usuario.");
+            }
+            UsuarioDAL usuarioDAL =new UsuarioDAL();
+            return usuarioDAL.BuscarPorNomeUsuario(_nomeUsuario);
+        }
+        public List<Usuario> BuscarTodos()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            Usuario usuario;
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = "select id_usuario,Nome,Username,CPF,Email,Ativo from Usuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        usuario = new Usuario();
+                        usuario.id_usuario = Convert.ToInt32(rd["id_usuario"]);
+                        usuario.Nome = rd["Nome"].ToString();
+                        usuario.Username = rd["Username"].ToString();
+                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.Email = rd["Email"].ToString();
+                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+
+                        usuarios.Add(usuario);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocorreu um erro ao tentar buscar todos os usuarios: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+
+            return usuarios;
         }
         public void Alterar(Usuario _usuario)
         {
