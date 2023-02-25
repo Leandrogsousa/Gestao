@@ -12,7 +12,8 @@ namespace ConsoleAppPrincipal
             Console.WriteLine(@"Escolha uma opção:
                             \n\n1 - Cadastrar usuário
                             \n2 - Excluir usuário
-                            \n3 - Buscar todos os usuários");
+                            \n3 - Buscar todos os usuários
+                            \n4 - Buscar Por Nome Usuario");
 
 
             opcao = Convert.ToInt32(Console.ReadLine());
@@ -28,9 +29,21 @@ namespace ConsoleAppPrincipal
                 case 3:
                     BuscarTodosOsUsuarios();
                     break;
+                case 4:
+                    BuscarPorNomeUsuario();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private static void BuscarPorNomeUsuario()
+        {
+
+            UsuarioBLL usuarioBLL = new UsuarioBLL();
+            Usuario usuarios = UsuarioBLL.BuscarPorNomeUsuario();
+
+       
         }
 
         private static void ExcluirUsuario()
