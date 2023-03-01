@@ -129,9 +129,12 @@ namespace DAL
 
             return usuarios;
         }
-        public void Alterar(Usuario _usuario)
+        public void Alterar(Usuario _alterarusuario)
         {
+            ValidarDados(_alterarusuario);
 
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            usuarioDAL.Alterar(_alterarusuario);
         }
         
         public void Excluir(int _id)

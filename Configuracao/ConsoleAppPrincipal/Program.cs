@@ -258,17 +258,17 @@ namespace ConsoleAppPrincipal
             {
                 Console.WriteLine("\nAlteração de Cadastro de Usuário\n\n");
                 Console.WriteLine("Informe o Id do Usuário: ");
-                usuario.IDUsuario = Convert.ToInt32(Console.ReadLine());
+                usuario.id_usuario = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Informe seu Nome Completo: ");
                 usuario.Nome = Console.ReadLine();
                 Console.WriteLine("Informe o nome de acesso do Usuário: ");
-                usuario.NomeUsuario = Console.ReadLine();
+                usuario.Username = Console.ReadLine();
                 Console.WriteLine("Informe seu Email: ");
                 usuario.Email = Console.ReadLine();
                 Console.WriteLine("Informe o seu CPF: ");
-                usuario.CPF = Console.ReadLine();
+                usuario.Cpf = Console.ReadLine();
                 Console.WriteLine("Cadastre sua Senha: ");
-                usuario.Senha = Console.ReadLine();
+                usuario.Passoword = Console.ReadLine();
                 Console.WriteLine("O usuário estará ativo (S) ou (N)");
                 usuario.Ativo = Console.ReadLine().ToLower() == "s";//armazendo expressao booleana
 
@@ -309,7 +309,7 @@ namespace ConsoleAppPrincipal
             {
                 Console.WriteLine("\nAltera Permissão\n\n");
                 Console.WriteLine("Informe o Id Permissão que deseja alterar: ");
-                permissao.IdDescricao = Convert.ToInt32(Console.ReadLine());
+                permissao.id_descricao = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Informe o novo Nome da Descricao");
                 permissao.Descricao = Console.ReadLine();
 
@@ -367,13 +367,13 @@ namespace ConsoleAppPrincipal
                 Console.WriteLine("Informe seu Nome Completo: ");
                 usuario.Nome = Console.ReadLine();
                 Console.WriteLine("Informe o nome de acesso do Usuário: ");
-                usuario.NomeUsuario = Console.ReadLine();
+                usuario.Username = Console.ReadLine();
                 Console.WriteLine("Informe seu Email: ");
                 usuario.Email = Console.ReadLine();
                 Console.WriteLine("Informe o seu CPF: ");
-                usuario.CPF = Console.ReadLine();
+                usuario.Cpf = Console.ReadLine();
                 Console.WriteLine("Cadastre sua Senha: ");
-                usuario.Senha = Console.ReadLine();
+                usuario.Passoword = Console.ReadLine();
                 Console.WriteLine("O usuário estará ativo (S) ou (N)");
                 usuario.Ativo = Console.ReadLine().ToLower() == "s";//armazendo expressao booleana
 
@@ -389,11 +389,11 @@ namespace ConsoleAppPrincipal
             UsuarioBLL usuarioBLL = new UsuarioBLL();
             Console.WriteLine("Informe o nome do usuário: ");
             string nomeUsuario = Console.ReadLine();
-            Usuario usuario = usuarioBLL.BuscarUsuarioPorNome(nomeUsuario);
-            Console.WriteLine("IDUsuario: " + usuario.IDUsuario);
+            Usuario usuario = usuarioBLL.BuscarPorNomeUsuario(nomeUsuario);
+            Console.WriteLine("IDUsuario: " + usuario.id_usuario);
             Console.WriteLine("Nome: " + usuario.Nome);
-            Console.WriteLine("NomeUsuario: " + usuario.NomeUsuario);
-            Console.WriteLine("CPF: " + usuario.CPF);
+            Console.WriteLine("NomeUsuario: " + usuario.Username);
+            Console.WriteLine("CPF: " + usuario.Cpf);
             Console.WriteLine("Email: " + usuario.Email);
             Console.WriteLine("\n\nPressione ENTER para continuar.");
             Console.ReadLine();
@@ -406,9 +406,9 @@ namespace ConsoleAppPrincipal
 
             foreach (Usuario item in usuarios)
             {
-                Console.WriteLine("IDUsuario: " + item.IDUsuario);
+                Console.WriteLine("IDUsuario: " + item.id_usuario);
                 Console.WriteLine("Nome: " + item.Nome);
-                Console.WriteLine("Nome do Usuario: " + item.NomeUsuario);
+                Console.WriteLine("Nome do Usuario: " + item.Username);
             }
 
             Console.WriteLine("\n\nPressione ENTER para continuar.");
@@ -429,7 +429,7 @@ namespace ConsoleAppPrincipal
             {
                 Console.WriteLine("\nListar Grupo\n\n");
                 Console.WriteLine("Insira o Id do grupo: ");
-                _idgrupoUsuario.IdGrupoUsuario = Convert.ToInt32(Console.ReadLine());
+                _idgrupoUsuario.id_grupousuario = Convert.ToInt32(Console.ReadLine());
                 //Console.WriteLine("");
                 // _idgrupoUsuario.NomeGrupo = Console.ReadLine();
                 //Console.Clear();
@@ -456,3 +456,4 @@ namespace ConsoleAppPrincipal
         }
 
     }
+}

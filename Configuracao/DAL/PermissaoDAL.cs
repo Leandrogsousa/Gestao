@@ -44,14 +44,19 @@ namespace DAL
         {
             return new Usuario();
         }
-        public void Alterar(Usuario _usuario)
+        public void Alterar(Permissao _permissao)
         {
+            if (_permissao.Descricao.Length <= 3 || _permissao.Descricao.Length >= 250)
+                throw new Exception("A alteração informada deverá conter de 3 a 250 caracteres.");
 
+            PermissaoDAL permissaoDAL = new PermissaoDAL();
+            permissaoDAL.Alterar(_permissao);
         }
 
-        public void Excluir(int _id)
+        public void Excluir(Permissao _permissao)
         {
-
+            PermissaoDAL permissaoDAL = new PermissaoDAL();
+            permissaoDAL.Excluir(_permissao);
         }
     }
 }
