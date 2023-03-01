@@ -38,36 +38,45 @@ namespace DAL
                 cn.Close();
             }
         }
-        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
+        public Usuario BuscarPorNomeUsuario(string _Username)
         {
+            Usuario usuario = new Usuario();
             SqlConnection cn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
-            Usuario usuario;
+            
 
             try
             {
 
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = "select id_usuario,Nome, from Usuario where Nome =@Nome";
+                cmd.CommandText = @"SELECT id_usuario, Nome, CPF, Email, Ativo FROM Usuario WHERE Username =@Username";
+                cmd.Parameters.AddWithValue("@Username", _Username);
                 cmd.CommandType = System.Data.CommandType.Text;
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
-                    while (rd.Read())
+                    if (rd.Read())
                     {
                         usuario = new Usuario();
                         usuario.id_usuario = Convert.ToInt32(rd["id_usuario"]);
                         usuario.Nome = rd["Nome"].ToString();
-                    
-                        
+                        usuario.Username = rd["Username"].ToString();
+                        usuario.Cpf = rd["Cpf"].ToString();
+                        usuario.Email = rd["Email"].ToString();
+                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+
+                    }
+                    else
+                    {
+                        throw new Exception("Usuário não encontrado");
                     }
                 }
-
+                return usuario;
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar buscar o usuario: " + ex.Message);
+                throw new Exception("Ocorreu um erro ao tentar buscar o usuario por nome: " + ex.Message);
 
             }
             finally
@@ -75,9 +84,6 @@ namespace DAL
                 cn.Close();
             }
 
-
-            return new Usuario();
-            
         }
         public List<Usuario> BuscarTodos()
         {
